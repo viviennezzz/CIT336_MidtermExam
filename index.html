@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css"> 
+<title>Add Record Form</title>
+</head>
+<body>
+<h1>Heckin' Cute Doggo Adoption</h1>
+<form method="get">  
+<p>
+<label for="breed">Breed: </label>
+<select name="breed" id="breed">
+<option value="Lab-mix">Lab-mix</option>
+<option value="Pitbull-mix">Pitbull-mix</option>
+<option value="Chihuahua-mix">Chihuahua-mix</option>
+<option value="Shepherd-mix">Shepherd-mix</option>
+<option value="Hound-mix">Hound-mix</option>
+</select>
+</p>
+<p>
+<label for="name">Name:</label>
+<input type="text" name="name" id="name">
+</p>
+<p>
+<label for="age">Age:</label>
+<input type="text" name="age" id="age">
+</p>
+<input type="submit" value="Submit" onclick="addtoDB()">
+</form> <!--create a form-->
+<a href="select.php">See the list of adoptions</a>
+
+
+<script> //JavaScript
+function addtoDB() {
+  var xhttp; 
+  xhttp = new XMLHttpRequest(); //Create an XMLHttpRequest object
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+        document.getElementById("submitted").innerHTML = "form submitted";
+    } 
+  }; //Create the function to be executed when the server response is ready
+  var breed = document.getElementById('breed').value;
+   var name = document.getElementById('name').value;
+     var age = document.getElementById('age').value;
+   var queryString =  "?breed=" + breed + "&name=" + name + "&age=" + age;
+   console.log(queryString);
+   xhttp.open("GET", "insert.php" + queryString, true);  
+   xhttp.send(); //Send the request off to a PHP file (insert.php) on the server
+  
+}
+</script>
+</body>
+</html>

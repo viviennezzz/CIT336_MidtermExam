@@ -1,0 +1,10 @@
+body{
+	background-color: maroon;
+	text-align: center;
+	font-family:arial;
+	color: white;
+} /*Font is Arial, text is white, background color is maroon*/
+
+a {
+color: white;
+} /*Change the hyperlink color to white*/
